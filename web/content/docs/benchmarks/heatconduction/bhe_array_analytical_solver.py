@@ -10,16 +10,16 @@ mp.dps = 25; mp.pretty = True
 #part 1:gif_splitfile to txt
 
 #新建文件夹txt，用于存储原文件的分解文件集。
-os.mkdir("C://george//PhD//papers//BHE_sc//result//txt") 
+os.mkdir("C://george//PhD//papers//BHE_sc//result//txt")
 #os.chdir(path) 方法用于改变当前工作目录到指定的路径。此处创建路径到新建文件夹txt
-os.chdir("C://george//PhD//papers//BHE_sc//result//txt") 
+os.chdir("C://george//PhD//papers//BHE_sc//result//txt")
 txtfiles = os.getcwd() #获得当前运行脚本所在目录作为文件储存地址
 
-# define the path of the data file //           
+# define the path of the data file
 str_tec_file_path = "C://george//PhD//papers//BHE_sc//result//tec_0_5m.tec"
 
 data_num =0
-with open(str_tec_file_path, 'r') as f_in:    
+with open(str_tec_file_path, 'r') as f_in:
     i = -1 #此处写-1是因为要使输出文件名第一个必须是以0结尾，不然和part2的文件读入循环对不上。必须要对上是因为\n
            #part2数组值从0位开始储存的。
     for line in f_in:
@@ -35,13 +35,13 @@ with open(str_tec_file_path, 'r') as f_in:
 #记录总共的分出文件数目，用于part 2
 numfile = i + 1
 #关闭并完整文件释放内存
-txtfiles.close()                     
+txtfiles.close()
 
 
 # plotting T_in T_out curves,建立作图文件夹及及改变工作路径
 os.mkdir("C://george//PhD//papers//BHE_sc//result//png")
-os.chdir("C://george//PhD//papers//BHE_sc//result//png") 
-pngfiles = os.getcwd() 
+os.chdir("C://george//PhD//papers//BHE_sc//result//png")
+pngfiles = os.getcwd()
 
 #建立source term坐标矩阵，用以计算各热源对referece point的温度影响矩阵
 po_x = np.array([40,40,40,40,40],dtype=float).reshape(-1,1) + np.arange(0,25,5)
@@ -86,7 +86,7 @@ ppo_x_re = np.reshape(po_x, (-1,1))
 ppo_y_re = np.reshape(po_y, (-1,1))
 
 # 建立动态变量名
-createVar = locals() 
+createVar = locals()
 
 # 建立月份名字表，因为数据记录从1月1日有一组数据，所以多出一个月数据。
 month = [" Temperature after 0 months ", " Temperature after 4 months", " Temperature after 8 months", " Temperature after 12 months", " Temperature after 16 months", " Temperature after 20 months",
@@ -102,17 +102,17 @@ with open(txtpath2, 'r') as f_in_txt:
         # time_double = 0.0
         dist_double2 = float(data_line[0])
         cordinate2 = math.sqrt(dist_double2**2/2)
-    
+
         #  put into the list 
         dist_arrayy= np.vstack((dist_arrayy, cordinate2))
-    
+
     dist_arrayy_new = np.delete(dist_arrayy, 0, 0)
-    
+
     numtemppoints = len(dist_arrayy_new)
     T2=np.zeros([numtemppoints,numtimesteps])
-    
+
     coeff_all = np.zeros([numtemppoints,numtimesteps])
-    
+
     for currstep in range(0,numtimesteps):
         Temp_po_to_referencepo= np.zeros([numtemppoints,numbhe])
         po_dist_to_referencepo= np.zeros([numtemppoints,numbhe])
@@ -125,18 +125,18 @@ with open(txtpath2, 'r') as f_in_txt:
                     po_dist_to_referencepo[j,i] = abs(ppo_x_re[i] - (dist_arrayy_new[j]+1))**2 + abs(ppo_y_re[i] - dist_arrayy_new[j])**2
                     exp = po_dist_to_referencepo[j,i]/(4*alpha_med*time_trans*(currstep+1))
                     n = e1(exp)
-                    localcoeff[j,i] = 1/(4*math.pi*lamda_med)*n 
+                    localcoeff[j,i] = 1/(4*math.pi*lamda_med)*n
             if(time_trans*(currstep+1)-time_trans*1>0):
                 for j in range(0,numtemppoints):
                     po_dist_to_referencepo[j,i] = abs(ppo_x_re[i] - (dist_arrayy_new[j]+1))**2 + abs(ppo_y_re[i] - dist_arrayy_new[j])**2
                     exp1 = po_dist_to_referencepo[j,i]/(4*alpha_med*time_trans*currstep)
                     n1 = e1(exp1)
-                    localcoeff[j,i] = localcoeff[j,i] - 1/(4*math.pi*lamda_med)*n1  
+                    localcoeff[j,i] = localcoeff[j,i] - 1/(4*math.pi*lamda_med)*n1
                            
-        localcoeff_all= np.sum(localcoeff,axis=1).reshape(-1,1)                      
+        localcoeff_all= np.sum(localcoeff,axis=1).reshape(-1,1)
         coeff_all[:,1:]=coeff_all[:,:numtimesteps-1]
-        coeff_all[:,:1]=localcoeff_all                               
-    
+        coeff_all[:,:1]=localcoeff_all
+
     for currstep in range(0,numtimesteps):
         T2[:,currstep] = np.sum(coeff_all[:,numtimesteps-1-currstep:]*qq_all[:,:currstep+1],axis=1) +10
 
@@ -154,7 +154,7 @@ for m in range(0 , numfile):
     createVar['temperature_array_ana'+ str(m)] = 0.0
     createVar['dist_array2'+ str(m)] = 0.0
     createVar['temperature_array_ana2'+ str(m)] = 0.0
-    
+
     createVar['dist_array_ogs6'+ str(m)]             =  0.0
     createVar['temperature_array_ogs6'+ str(m)]      =  0.0
              
@@ -190,8 +190,8 @@ for m in range(0 , numfile):
                 createVar['dist_array'+ str(m)] = np.vstack((createVar['dist_array'+ str(m)], cordinate))
                 createVar['temperature_array_ogs5'+ str(m)] = np.vstack((createVar['temperature_array_ogs5'+ str(m)], temperature))
                 createVar['temperature_array_ana'+ str(m)] = np.vstack((createVar['temperature_array_ana'+ str(m)], T))
-      
-        f_in_txt.close() 
+
+        f_in_txt.close()
         # end of loop 
         
         #去除21和22行的0.0值，因为此值被带入了dist_array的list第一行，可查看variable explorer temperature_array观察。
@@ -228,8 +228,8 @@ for m in range(0 , numfile):
         plt.title(month[m],fontsize=12)
         # plt.show()
         plt.savefig('pngfile{}.png'.format(m),dpi = 300, transparent = False)
-        
-            
+
+
     else:
         #解析解数据项,实际是温度场斜三角矩阵相加
         T = np.zeros([12])
@@ -265,12 +265,12 @@ for m in range(0 , numfile):
                     T[m1] = np.sum(Temp_po_to_referencepo)
                         
                 T_sum = np.sum(T) + T0
-                                   
+
                 createVar['temperature_array_ana'+ str(m)] = np.vstack((createVar['temperature_array_ana'+ str(m)], T_sum))
-        
+
         f_in_txt.close() 
-        
-        
+
+
         #ogs5项：
         with open(txtpath, 'r') as f_in_txt:
             for line in f_in_txt:
@@ -284,15 +284,15 @@ for m in range(0 , numfile):
                 #  put into the list 
                 createVar['dist_array'+ str(m)] = np.vstack((createVar['dist_array'+ str(m)], cordinate))
                 createVar['temperature_array_ogs5'+ str(m)] = np.vstack((createVar['temperature_array_ogs5'+ str(m)], temperature))        
-        
-        f_in_txt.close() 
+
+        f_in_txt.close()
         #去除21和22行的0.0值，因为此值被带入了dist_array的list第一行，可查看variable explorer temperature_array观察。
         #目的是去除做图时的第一个数据0值。
         dist_array_new = np.delete(createVar['dist_array'+ str(m)], 0, 0)
         temperature_array_ogs5_new = np.delete(createVar['temperature_array_ogs5'+ str(m)], 0, 0)
         temperature_array_ana_new = np.delete(createVar['temperature_array_ana'+ str(m)], 0, 0)
-        
-        
+
+
         #ogs6项
         with open(txtpath_ogs6, 'r') as f_in_txt:
             for line in f_in_txt:
@@ -307,7 +307,7 @@ for m in range(0 , numfile):
                 createVar['dist_array_ogs6'+ str(m)] = np.vstack((createVar['dist_array_ogs6'+ str(m)], cordinate))
                 createVar['temperature_array_ogs6'+ str(m)] = np.vstack((createVar['temperature_array_ogs6'+ str(m)], temperature))        
 
-        f_in_txt.close() 
+        f_in_txt.close()
         dist_array_new_ogs6 = np.delete(createVar['dist_array_ogs6'+ str(m)], 0, 0)
         temperature_array_ogs6_new = np.delete(createVar['temperature_array_ogs6'+ str(m)], 0, 0)
 
@@ -326,8 +326,8 @@ for m in range(0 , numfile):
         plt.title(month[m],fontsize=12)
         # plt.show()
         plt.savefig('pngfile{}.png'.format(m), dpi = 300, transparent = False)
-        
-        # end of loop 
+
+        # end of loop
 txtpath.close()
 pngfiles.close() 
 
