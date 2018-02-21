@@ -165,7 +165,7 @@ analytical and numerical solution using different mesh size
 []{data-label="AB_Sec4_4"}](BHE_array_benchmark_figures/figure_5 "fig:"){width="80.00000%"}\
 
 Summary
-=======
+===========================
 
 In this benchmark, a 2D numerical model has been constructed to simulate
 the ground temperature variation caused by heat extraction by BHE. The
