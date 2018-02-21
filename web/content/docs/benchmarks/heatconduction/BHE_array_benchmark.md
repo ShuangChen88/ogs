@@ -2,7 +2,7 @@
 date = "2018-02-21T13:44:00+01:00"
 title = "BHE Array 2D"
 weight = 123
-project = "Parabolic/T/1D_neumann/line_60_heat.prj" # this link needs to be updated. 
+project = "Parabolic/T/1D_neumann/line_60_heat.prj" # this link needs to be updated.
 author = "Shuang Chen and Haibing Shao"
 bibliography = "bhe_array_benchmark.bib"
 
@@ -47,7 +47,7 @@ of equation (\[eq\_1\]). The overall temperature change at an
 observation point with a local coordinate (i, j) can be then calculated
 as
 
-$$\Delta \mathop T\nolimits_{i,j} \left( {t,\mathop q\nolimits_{k = 1,...,n} } \right) = \sum\limits_{k = 1}^n {\Delta \mathop T\nolimits_{i,j,k} } \left( {t,\mathop q\nolimits_k } \right). 
+$$\Delta \mathop T\nolimits_{i,j} \left( {t,\mathop q\nolimits_{k = 1,...,n} } \right) = \sum\limits_{k = 1}^n {\Delta \mathop T\nolimits_{i,j,k} } \left( {t,\mathop q\nolimits_k } \right).
 \label{eq_2}$$
 
 where ${\mathop q\nolimits_k }$ is a sequence of heat extraction pulses
@@ -61,7 +61,7 @@ imposed on each BHE can be calculated as
 
 $$\begin{split}
         \Delta \mathop T\nolimits_{i,j} \left( {t,\mathop q\nolimits_{k,l = 1,...,m} } \right)= \sum\limits_{k = 1}^m {\frac{{\mathop q\nolimits_l  - \mathop q\nolimits_{l - 1} }}{{4\pi L\lambda }}} E_1\left[ {\frac{{{{\left( {i - \mathop x\nolimits_k } \right)}^2} + {{\left( {j - \mathop y\nolimits_k } \right)}^2}}}{{4\alpha \left( {\mathop t\nolimits_m  - \mathop t\nolimits_l } \right)}}} \right] \\
-         = \sum\limits_{l = 1}^m {\sum\limits_{k = l}^n {\frac{{\mathop q\nolimits_{k,l} }}{{4\pi L\lambda }}} } \left( {E_1\left[ {\frac{{{{\left( {i - \mathop x\nolimits_k } \right)}^2} + {{\left( {j - \mathop y\nolimits_k } \right)}^2}}}{{4\alpha \left( {\mathop t\nolimits_m  - \mathop t\nolimits_{l - 1} } \right)}}} \right] - E_1\left[ {\frac{{{{\left( {i - \mathop x\nolimits_k } \right)}^2} + {{\left( {j - \mathop y\nolimits_k } \right)}^2}}}{{4\alpha \left( {\mathop t\nolimits_m  - \mathop t\nolimits_l } \right)}}} \right]} \right). 
+         = \sum\limits_{l = 1}^m {\sum\limits_{k = l}^n {\frac{{\mathop q\nolimits_{k,l} }}{{4\pi L\lambda }}} } \left( {E_1\left[ {\frac{{{{\left( {i - \mathop x\nolimits_k } \right)}^2} + {{\left( {j - \mathop y\nolimits_k } \right)}^2}}}{{4\alpha \left( {\mathop t\nolimits_m  - \mathop t\nolimits_{l - 1} } \right)}}} \right] - E_1\left[ {\frac{{{{\left( {i - \mathop x\nolimits_k } \right)}^2} + {{\left( {j - \mathop y\nolimits_k } \right)}^2}}}{{4\alpha \left( {\mathop t\nolimits_m  - \mathop t\nolimits_l } \right)}}} \right]} \right).
     \end{split}
 \label{eq_3}$$
 
