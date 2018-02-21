@@ -31,7 +31,7 @@ with open(str_tec_file_path, 'r') as f_in:
             data_num = 0
             i = i + 1
             txtfiles = open('txtfile{}.txt'.format(i), 'w')#格式化命名文件名存储
-            
+
 #记录总共的分出文件数目，用于part 2
 numfile = i + 1
 #关闭并完整文件释放内存
@@ -103,7 +103,7 @@ with open(txtpath2, 'r') as f_in_txt:
         dist_double2 = float(data_line[0])
         cordinate2 = math.sqrt(dist_double2**2/2)
 
-        #  put into the list 
+        #  put into the list
         dist_arrayy= np.vstack((dist_arrayy, cordinate2))
 
     dist_arrayy_new = np.delete(dist_arrayy, 0, 0)
@@ -132,7 +132,7 @@ with open(txtpath2, 'r') as f_in_txt:
                     exp1 = po_dist_to_referencepo[j,i]/(4*alpha_med*time_trans*currstep)
                     n1 = e1(exp1)
                     localcoeff[j,i] = localcoeff[j,i] - 1/(4*math.pi*lamda_med)*n1
-                           
+
         localcoeff_all= np.sum(localcoeff,axis=1).reshape(-1,1)
         coeff_all[:,1:]=coeff_all[:,:numtimesteps-1]
         coeff_all[:,:1]=localcoeff_all
@@ -157,14 +157,14 @@ for m in range(0 , numfile):
 
     createVar['dist_array_ogs6'+ str(m)]             =  0.0
     createVar['temperature_array_ogs6'+ str(m)]      =  0.0
-             
+
     #解析解1：
 #    if m == 0 or m ==2 or m ==3 or m ==5 or m ==6 or m ==8 or m ==9 or m ==10:
-#        q = q2    
+#        q = q2
 #    elif m == 1 or m ==4 or m ==7:
-#        q = q1 
+#        q = q1
     if m == 0:
-        with open(txtpath, 'r') as f_in_txt: 
+        with open(txtpath, 'r') as f_in_txt:
             for line in f_in_txt:
                 # split line
                 data_line = line.split(" ") #maxsplit
@@ -172,7 +172,7 @@ for m in range(0 , numfile):
                 dist_double = float(data_line[0])
                 cordinate = math.sqrt(dist_double**2/2)
                 temperature = float(data_line[1])
-                
+
                 #解析解数据项
                 time = time_trans + 10e-6
                 for i in range(0,5):
@@ -183,24 +183,24 @@ for m in range(0 , numfile):
                         exp = po_dist_to_referencepo[i,j]/(4*alpha_med*time)
                         n1 = e1(exp)
                         Temp_po_to_referencepo[i,j] = q3/(4*math.pi*lamda_med)*n1
-                                          
+
                 T = np.sum(Temp_po_to_referencepo) + T0
-                                   
-                #  put into the list 
+
+                #  put into the list
                 createVar['dist_array'+ str(m)] = np.vstack((createVar['dist_array'+ str(m)], cordinate))
                 createVar['temperature_array_ogs5'+ str(m)] = np.vstack((createVar['temperature_array_ogs5'+ str(m)], temperature))
                 createVar['temperature_array_ana'+ str(m)] = np.vstack((createVar['temperature_array_ana'+ str(m)], T))
 
         f_in_txt.close()
-        # end of loop 
+        # end of loop
         
         #去除21和22行的0.0值，因为此值被带入了dist_array的list第一行，可查看variable explorer temperature_array观察。
         #目的是去除做图时的第一个数据0值。
         dist_array_new = np.delete(createVar['dist_array'+ str(m)], 0, 0)
         temperature_array_ogs5_new = np.delete(createVar['temperature_array_ogs5'+ str(m)], 0, 0)
         temperature_array_ana_new = np.delete(createVar['temperature_array_ana'+ str(m)], 0, 0)
-        
-        with open(txtpath_ogs6, 'r') as f_in_txt: 
+
+        with open(txtpath_ogs6, 'r') as f_in_txt:
             for line in f_in_txt:
                 # split line
                 data_line = line.split(" ") #maxsplit
@@ -210,7 +210,7 @@ for m in range(0 , numfile):
                 temperature = float(data_line[1])
                 createVar['dist_array_ogs6'+ str(m)] = np.vstack((createVar['dist_array_ogs6'+ str(m)], cordinate))
                 createVar['temperature_array_ogs6'+ str(m)] = np.vstack((createVar['temperature_array_ogs6'+ str(m)], temperature))
-        f_in_txt.close() 
+        f_in_txt.close()
         dist_array_new_ogs6 = np.delete(createVar['dist_array_ogs6'+ str(m)], 0, 0)
         temperature_array_ogs6_new = np.delete(createVar['temperature_array_ogs6'+ str(m)], 0, 0)
 
@@ -240,19 +240,19 @@ for m in range(0 , numfile):
                 # time_double = 0.0
                 dist_double = float(data_line[0])
                 cordinate = math.sqrt(dist_double**2/2)
-                
+
                 i1 = m +1
                 for m1 in range(1, m + 1 ):
                     i1 = i1 - 1
                     #时间变量，timestep温度随时间叠加矩阵每行重新设为0
                     time = time_trans * i1 + 10e-6
                     if  m1 == 2 or m1 == 5 or m1 == 8 or m1 == 11:
-                        q = q2    
+                        q = q2
                     elif m1 == 1 or m1 ==4 or m1 ==7 or m1 ==10:
                         q = q1
                     elif m1 == 3 or m1 == 6 or m1 == 9:
                         q = q3
-                        
+
                     for i in range(0,5):
                         for j in range(0,5):
                             po_dist_to_referencepo[i,j] = abs(po_x[i,j]-(cordinate+1))**2 + abs( po_y[i,j]-cordinate)**2
@@ -261,14 +261,14 @@ for m in range(0 , numfile):
                             exp = po_dist_to_referencepo[i,j]/(4*alpha_med*time)
                             n1 = e1(exp)
                             Temp_po_to_referencepo[i,j] = q/(4*math.pi*lamda_med)*n1
-                                          
+
                     T[m1] = np.sum(Temp_po_to_referencepo)
-                        
+
                 T_sum = np.sum(T) + T0
 
                 createVar['temperature_array_ana'+ str(m)] = np.vstack((createVar['temperature_array_ana'+ str(m)], T_sum))
 
-        f_in_txt.close() 
+        f_in_txt.close()
 
 
         #ogs5项：
@@ -280,10 +280,10 @@ for m in range(0 , numfile):
                 dist_double = float(data_line[0])
                 cordinate = math.sqrt(dist_double**2/2)
                 temperature = float(data_line[1])
-                
-                #  put into the list 
+
+                #  put into the list
                 createVar['dist_array'+ str(m)] = np.vstack((createVar['dist_array'+ str(m)], cordinate))
-                createVar['temperature_array_ogs5'+ str(m)] = np.vstack((createVar['temperature_array_ogs5'+ str(m)], temperature))        
+                createVar['temperature_array_ogs5'+ str(m)] = np.vstack((createVar['temperature_array_ogs5'+ str(m)], temperature))
 
         f_in_txt.close()
         #去除21和22行的0.0值，因为此值被带入了dist_array的list第一行，可查看variable explorer temperature_array观察。
@@ -302,10 +302,10 @@ for m in range(0 , numfile):
                 dist_double = float(data_line[0])
                 cordinate = math.sqrt(dist_double**2/2)
                 temperature = float(data_line[1])
-                
-                #  put into the list 
+
+                #  put into the list
                 createVar['dist_array_ogs6'+ str(m)] = np.vstack((createVar['dist_array_ogs6'+ str(m)], cordinate))
-                createVar['temperature_array_ogs6'+ str(m)] = np.vstack((createVar['temperature_array_ogs6'+ str(m)], temperature))        
+                createVar['temperature_array_ogs6'+ str(m)] = np.vstack((createVar['temperature_array_ogs6'+ str(m)], temperature))
 
         f_in_txt.close()
         dist_array_new_ogs6 = np.delete(createVar['dist_array_ogs6'+ str(m)], 0, 0)
@@ -330,8 +330,3 @@ for m in range(0 , numfile):
         # end of loop
 txtpath.close()
 pngfiles.close() 
-
-
-
-
-
