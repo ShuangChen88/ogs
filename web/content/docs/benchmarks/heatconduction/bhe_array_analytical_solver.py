@@ -193,7 +193,7 @@ for m in range(0 , numfile):
 
         f_in_txt.close()
         # end of loop
-        
+
         #去除21和22行的0.0值，因为此值被带入了dist_array的list第一行，可查看variable explorer temperature_array观察。
         #目的是去除做图时的第一个数据0值。
         dist_array_new = np.delete(createVar['dist_array'+ str(m)], 0, 0)
@@ -329,4 +329,4 @@ for m in range(0 , numfile):
 
         # end of loop
 txtpath.close()
-pngfiles.close() 
+pngfiles.close()
