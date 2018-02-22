@@ -1,10 +1,9 @@
 +++
+author = "Shuang Chen and Haibing Shao"
 date = "2018-02-21T13:44:00+01:00"
 title = "BHE Array 2D"
 weight = 123
-project = "Parabolic/T/1D_neumann/line_60_heat.prj" # this link needs to be updated.
-author = "Shuang Chen and Haibing Shao"
-bibliography = "bhe_array_benchmark.bib"
+project = "Parabolic/T/2D_BHE_array/bhe2d.prj"
 
 [menu]
   [menu.benchmarks]
