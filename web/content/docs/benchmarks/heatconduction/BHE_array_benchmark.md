@@ -14,7 +14,7 @@ bibliography = "bhe_array_benchmark.bib"
 
 ## Problem description
 
-When shallow geothermal energy is extracted by using Borehole Heat Exchanger (BHE) for heating of buildings, it causes the decrease of subsurface temperature in the vicinity of BHE. In this benchmark, a 2D numerical model has been constructed to model the above temperature variation. The model is validated against the super-imposed analytical solution. Additionally the impact of mesh density to the accuracy of numerical result is also discussed. 
+When shallow geothermal energy is extracted by using Borehole Heat Exchanger (BHE) for heating of buildings, it causes the decrease of subsurface temperature in the vicinity of BHE. In this benchmark, a 2D numerical model has been constructed to model the above temperature variation. The model is validated against the super-imposed analytical solution. Additionally the impact of mesh density to the accuracy of numerical result is also discussed.
 
 ## Analytical Solution
 
