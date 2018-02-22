@@ -272,7 +272,7 @@
                     <type>Nodal</type>
                     <parameter>sourceterm_heat_transfer_coefficient</parameter>
                 </source_term>
-            </source_terms>		
+            </source_terms>
         </process_variable>
     </process_variables>
     <nonlinear_solvers>
