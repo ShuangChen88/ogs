@@ -93,9 +93,6 @@ In order to investigate the impact of mesh density on the accuracy of numerical 
 
 Figure 4: The relative difference of computed temperature at point A between the analytical and numerical solution using different mesh size
 
-{{< img src="../BHE_array_benchmark_figures/figure_5.png" width="200">}}
-
-Figure 5: The relative difference of computed temperature at point A between the analytical and numerical solution using different mesh size
 
 ## Summary
 
