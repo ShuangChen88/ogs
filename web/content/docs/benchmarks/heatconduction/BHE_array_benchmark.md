@@ -56,7 +56,7 @@ In this model, the quad element was adopted to compose the mesh. The initial tem
 | Heat extraction rate of the BHE  | $q$          | 35                  | $W/m$            |
 | Diameter of the BHE              | $D$          | 0.15                | $m$              |
 
-{{< img src="../BHE_array_benchmark_figures/figure_1.png" >}}
+{{< img src="../BHE_array_benchmark_figures/figure_1.png" width="200">}}
 
 Figure 1: Model geometry, BHE location, and the observation profile
 
@@ -78,21 +78,21 @@ where $r_b$ is the BHE radius. n denotes the number of surrounding nodes. n = 8
 
 Figure 2 and 3 show the comparison of the temperature distribution along the observation profile (position see Figure 1) using analytical solution with the numerical results from OGS5 and OGS6 for every 4 months in the whole simulated time. It shows the numerical solution has a very good agreement with the analytical solution.
 
-{{< img src="../BHE_array_benchmark_figures/figure_2.png" >}}
+{{< img src="../BHE_array_benchmark_figures/figure_2.png" width="200">}}
 
 Figure 2: The temperature evolution of the BHEs field along the observation profile
 
-{{< img src="../BHE_array_benchmark_figures/figure_3.png" >}}
+{{< img src="../BHE_array_benchmark_figures/figure_3.png" width="200">}}
 
 Figure 3: The temperature evolution of the BHEs field along the observation
 
 In order to investigate the impact of mesh density on the accuracy of numerical result, the simulated temperature profile at the observation point A (53 m, 52.5 m) was plotted and compared against the analytical solution. Figure 3 and  4 show the relative difference of the computed temperature between the analytical and numerical solution by using different mesh size (2.5 m, 1 m, 0.5 m, 0.25 m and 0.2 m). The results show that the difference becomes smaller when the mesh size is approaching 0.5 m, which is expected as the optimal mesh size mentioned in Diersch et al. (2011).
 
-{{< img src="../BHE_array_benchmark_figures/figure_4.png" >}}
+{{< img src="../BHE_array_benchmark_figures/figure_4.png" width="200">}}
 
 Figure 4: The relative difference of computed temperature at point A between the analytical and numerical solution using different mesh size
 
-{{< img src="../BHE_array_benchmark_figures/figure_5.png" >}}
+{{< img src="../BHE_array_benchmark_figures/figure_5.png" width="200">}}
 
 Figure 5: The relative difference of computed temperature at point A between the analytical and numerical solution using different mesh size
 
