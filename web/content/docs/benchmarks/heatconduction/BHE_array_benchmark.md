@@ -49,10 +49,10 @@ In this model, the quad element was adopted to compose the mesh. The initial tem
 
 | Parameter                        | Symbol       | Value               | Unit             |
 | -------------------------------- |:------------ | -------------------:| ----------------:|
-| Soil thermal conductivity        | $\lambda$    | 1.720               | $Wm^{-1}K^{-1}   |
+| Soil thermal conductivity        | $\lambda$    | 1.720               | $Wm^{-1}K^{-1}$  |
 | Soil heat capacity               | $\rho c$     | $2.925\times10^{6}$ | $J^{-3} mK^{-1}$ |
 | Ground thermal diffusivity       | $\alpha$     | $5.7\times10^{-7}$  | $Wm^{-1}K^{-1}$  |
-| Initial subsurface temperature   | $T_0$        | 10                  | $^{\circ}C       |
+| Initial subsurface temperature   | $T_0$        | 10                  | $^{\circ}C$      |
 | Heat extraction rate of the BHE  | $q$          | 35                  | $W/m$            |
 | Diameter of the BHE              | $D$          | 0.15                | $m$              |
 
