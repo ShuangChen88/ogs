@@ -33,16 +33,16 @@ In case multiple BHEs are present, Bayer et al. (2014) proposed to calculate th
 
 where ${\mathop q\nolimits_k }$ is a sequence of heat extraction pulses at t =1, ... ,m time steps. In this benchmark, the time step size of heat extraction pulses is set to 120 days, reflecting a 4-month long heat period and the 8-month long recovery interval every year. Within one time step the heat extraction rate on each BHE remains constant. By combining equation (1) and equation (2), the super-imposed temperature change due to the thermal load ${\mathop q\nolimits_k }$ imposed on each BHE can be calculated as
 
-\begin{split}
+\begin{equation}\begin{split}
         \Delta \mathop T\nolimits_{i,j} \left( {t,\mathop q\nolimits_{k,l = 1,...,m} } \right)= \sum\limits_{k = 1}^m {\frac{{\mathop q\nolimits_l  - \mathop q\nolimits_{l - 1} }}{{4\pi L\lambda }}} E_1\left[ {\frac{{{{\left( {i - \mathop x\nolimits_k } \right)}^2} + {{\left( {j - \mathop y\nolimits_k } \right)}^2}}}{{4\alpha \left( {\mathop t\nolimits_m  - \mathop t\nolimits_l } \right)}}} \right] \\
          = \sum\limits_{l = 1}^m {\sum\limits_{k = l}^n {\frac{{\mathop q\nolimits_{k,l} }}{{4\pi L\lambda }}} } \left( {E_1\left[ {\frac{{{{\left( {i - \mathop x\nolimits_k } \right)}^2} + {{\left( {j - \mathop y\nolimits_k } \right)}^2}}}{{4\alpha \left( {\mathop t\nolimits_m  - \mathop t\nolimits_{l - 1} } \right)}}} \right] - E_1\left[ {\frac{{{{\left( {i - \mathop x\nolimits_k } \right)}^2} + {{\left( {j - \mathop y\nolimits_k } \right)}^2}}}{{4\alpha \left( {\mathop t\nolimits_m  - \mathop t\nolimits_l } \right)}}} \right]} \right).
-    \end{split}
+    \end{split}\end{equation}
 
 where ${\mathop q\nolimits_{k,l} }$ is the heat extraction of the k-*th* BHE at time step *l*. The equation (3) will be used to calculate the analytical solution of the overall temperature change in this model for validating the numerical results. It is written in python code and can be found [here](../bhe_array_analytical_solver.py).
 
 ## Numerical model setup
 
-A 2D numerical model was constructed and simulated with the Finite element code OpenGeoSys (OGS). The subsurface was represented by a $100 \times 100~m $ square-shaped domain, inside of which 25 BHEs were installed (cf. Figure 1). The distance between adjacent BHEs is kept at 5 m. The ground temperature variation caused by the operation of the BHE array was simulated over a three years’ period. In the model, a 4-month heating period is assumed every year from January to April, with a constant heat extraction rate of 35 W/m on each BHE. In the rest months, the BHE system is shut down and no heat extraction was imposed. The parameters applied in the numerical model can be found in the table below.
+A 2D numerical model was constructed and simulated with the Finite element code OpenGeoSys (OGS). The subsurface was represented by a $100 \times 100~m$ square-shaped domain, inside of which 25 BHEs were installed (cf. Figure 1). The distance between adjacent BHEs is kept at 5 m. The ground temperature variation caused by the operation of the BHE array was simulated over a three years’ period. In the model, a 4-month heating period is assumed every year from January to April, with a constant heat extraction rate of 35 W/m on each BHE. In the rest months, the BHE system is shut down and no heat extraction was imposed. The parameters applied in the numerical model can be found in the table below.
 
 In this model, the quad element was adopted to compose the mesh. The initial temperature of the model domain is set to 10 $^{\circ}$C. For the need of modelling a fixed 10 $^{\circ}$C temperature boundary condition was imposed at coordinate (0 m, 0 m). In the model domain, the locations of the BHEs are identified as red dots as in Figure 1. On each of these points, a sink term was specified in the numerical model, with the specific heat extraction rate as listed in the following table.
 
@@ -61,6 +61,7 @@ Figure 1: Model geometry, BHE location, and the observation profile
 
 Different meshes were adopted to analyse the impact of mesh density on the numerical results. According to Diersch et al. (2011) the different element size can affect the accuracy of the numerical result significantly for such type of BHE simulation. The optimal element size $\triangle$ in a 2D model around the BHE node should have the following relationship with respect to the BHE diameter:
 
+\begin{equation}
 \begin{split}
     \Delta  = {\rm{ }}a{r_b}\ \hspace{6mm}
     a = \left\{ \begin{array}{l}
@@ -70,6 +71,7 @@ Different meshes were adopted to analyse the impact of mesh density on the numer
     \end{array}\right.
     \label{eq_4}
 \end{split}
+\end{equation}
 
 where $r_b$ is the BHE radius. n denotes the number of surrounding nodes. n = 8 is typical for a squared grid meshes. In this study, the BHE diameter is assumed to be 0.15 m. Based on equation (4) the optimal element size should be set to approximately 0.5 m.
 
