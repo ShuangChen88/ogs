@@ -89,11 +89,15 @@ Figure 2: The temperature evolution of the BHEs field along the observation prof
 
 Figure 3: The temperature evolution of the BHEs field along the observation profile
 
-In order to investigate the impact of mesh density on the accuracy of numerical result, the simulated temperature profile at the observation point A (53 m, 52.5 m) was plotted and compared against the analytical solution. Figure 3 and  4 show the relative difference of the computed temperature between the analytical and numerical solution by using different mesh size (2.5 m, 1 m, 0.5 m, 0.25 m and 0.2 m). The results show that the difference becomes smaller when the mesh size is approaching 0.5 m, which is expected as the optimal mesh size mentioned in Diersch et al. (2011).
+In order to investigate the impact of mesh density on the accuracy of numerical result, the simulated temperature profile at the observation point A (53 m, 52.5 m) was plotted and compared against the analytical solution. Figure 3 shows the relative difference of the computed temperature between the analytical and numerical solution by using different mesh size (2.5 m, 1 m, 0.5 m, 0.25 m and 0.2 m). The results show that the difference becomes smaller when the mesh size is approaching 0.5 m, which is expected as the optimal mesh size mentioned in Diersch et al. (2011). From Figure 4, it can be found that the absolute error of temperature values at point A should be less than 2.5e-3 if the mesh size is kept denser than 0.5m.
 
 {{< img src="../BHE_array_benchmark_figures/figure_4.png" width="200">}}
 
 Figure 4: The relative difference of computed temperature at point A between the analytical and numerical solution using different mesh size
+
+{{< img src="../BHE_array_benchmark_figures/figure_5.png" width="200">}}
+
+Figure 5: The absolute difference of computed temperature along the diagonal profile between the analytical and numerical solution using different mesh size
 
 
 ## Summary
