@@ -51,6 +51,6 @@ AddTest(
         EXECUTABLE_ARGS bhe2d.prj
         TESTER vtkdiff
         DIFF_DATA
-        standard_solution_bhe2d_pcs_0_ts_840_t_72576000.000000.vtu bhe2d_pcs_0_ts_840_t_72576000.000000.vtu temperature temperature 1e-4 1e-4
+        standard_solution_bhe2d_pcs_0_ts_840_t_72576000.000000.vtu bhe2d_pcs_0_ts_840_t_72576000.000000.vtu temperature temperature 1e-12 0.0
     REQUIREMENTS NOT OGS_USE_MPI
 )
