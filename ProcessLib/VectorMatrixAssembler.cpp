@@ -105,6 +105,10 @@ void VectorMatrixAssembler::assemble(
         assert(_local_b_data.size() == num_r_c);
         b.add(indices, _local_b_data);
     }
+    // debugging
+    M.write("C:\\george\\PhD\\UFZ\\task\\89\\opti_BHEprocess\\debug\\m.txt");
+    K.write("C:\\george\\PhD\\UFZ\\task\\89\\opti_BHEprocess\\debug\\K.txt");
+    b.write("C:\\george\\PhD\\UFZ\\task\\89\\opti_BHEprocess\\debug\\b.txt");
 }
 
 void VectorMatrixAssembler::assembleWithJacobian(
